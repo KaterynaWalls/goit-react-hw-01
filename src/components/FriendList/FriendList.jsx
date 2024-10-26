@@ -1,7 +1,7 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
 import FriendListItem from "../FriendListItem/FriendListItem";
 import styles from "./FriendList.module.css";
+import PropTypes from "prop-types";
 
 const FriendList = ({ friends }) => {
   return (
@@ -18,4 +18,15 @@ const FriendList = ({ friends }) => {
     </ul>
   );
 };
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+};
+
 export default FriendList;

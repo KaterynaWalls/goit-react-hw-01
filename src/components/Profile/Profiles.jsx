@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Profile.module.css";
+import PropTypes from "prop-types";
 
 const Profile = ({ name, tag, location, image, stats }) => {
   return (
@@ -27,6 +28,27 @@ const Profile = ({ name, tag, location, image, stats }) => {
       </ul>
     </div>
   );
+};
+
+Profile.defaultProps = {
+  location: "Unknown",
+  stats: {
+    followers: 0,
+    views: 0,
+    likes: 0,
+  },
+};
+
+Profile.propTypes = {
+  name: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  stats: PropTypes.shape({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default Profile;
